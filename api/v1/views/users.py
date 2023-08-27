@@ -68,7 +68,7 @@ def users_put(user_id):
         return jsonify({'error': 'Not a JSON'}), 400
 
     data = ['id', 'created_at', 'updated_at', 'email']
-    for key, value in data.items():
+    for key, value in response.items():
         if key not in data:
             setattr(obj, key, value)
 
