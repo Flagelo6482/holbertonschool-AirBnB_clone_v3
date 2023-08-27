@@ -76,4 +76,4 @@ def amenities_put(amenity_id):
             setattr(response, key, value)
 
     storage.save()
-    return jsonify(obj.to_dict()), 200
+    return jsonify(response.to_dict()), 200
