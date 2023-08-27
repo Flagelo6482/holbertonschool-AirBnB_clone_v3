@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """New route"""
 from flask import Flask, jsonify
-from api.v1.views import app_views
+from . import app_views
 from models import storage
 from models.state import State
 from models.city import City
@@ -21,12 +21,10 @@ def status():
 @app_views.route('/api/v1/stats', methods=['GET'])
 def stats():
     """Return the number of objects"""
-    dic = {
-        "amenities": storage.count(Amenity),
-        "cities": storage.count(City),
-        "places": storage.count(Place),
-        "reviews": storage.count(Review),
-        "states": storage.count(State),
-        "users": storage.count(User)}
-
-    return jsonify(dic)
+    d = {"amenities": storage.count(Amenity),
+         "cities": storage.count(City),
+         "places": storage.count(Place),
+         "reviews": storage.count(Review),
+         "states": storage.count(State),
+         "users": storage.count(User)}
+    return jsonify(d)
