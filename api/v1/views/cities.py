@@ -79,7 +79,7 @@ def cities_put(c_id):
     if obj is None:
         abort(404)
 
-    reponse = request.get_json()
+    response = request.get_json()
     if response is None:
         return jsonify({'error': 'not a json'}), 400
 
