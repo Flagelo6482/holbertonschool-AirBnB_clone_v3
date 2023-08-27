@@ -33,17 +33,16 @@ def amenities_id(amenity_id):
                  strict_slashes=False)
 def amenities_post():
     """Return json file with the dictionary of a newly object"""
-    response = request.get_json()
-    if response is None:
-        return jsonify({'error': 'Not a JSON'}), 400
-    elif 'name' not in response:
-        return jsonify({'error': 'Missing name'}), 400
+    data = request.get_json()
+    if data is None:
+        return jsonify({"error": "Not a JSON"}), 400
+    elif 'name' not in data:
+        return jsonify({"error": "Missing name"}), 400
 
-    amenity = Amenity(name=data['name'])
-    storage.new(amenity)
+    new_amenity = Amenity(name=data['name'])
+    storage.new(new_amenity)
     storage.save()
-
-    return jsonify(amenity.to_dict()), 201
+    return jsonify(new_amenity.to_dict()), 201
 
 
 @app_views.route('/amenities/<amenity_id>', methods=['DELETE'],
