@@ -63,7 +63,7 @@ def states_put(s_id):
     if objc is None:
         abort(404)
 
-    response = reques.get_json()
+    response = request.get_json()
     if response is None:
         return jsonify({'error': 'not a json'}), 400
     data = ['id', 'created_at', 'updated_at']
