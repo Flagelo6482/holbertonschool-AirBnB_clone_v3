@@ -18,7 +18,7 @@ def status():
     return jsonify(dic)
 
 
-@app_views.route('/api/v1/stats', methods=['GET'])
+@app_views.route('/stats', methods=['GET'])
 def stats():
     """Return the number of objects"""
     d = {"amenities": storage.count(Amenity),
